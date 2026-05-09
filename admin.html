@@ -1,85 +1,38 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لوحة الأدمن</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة الأدمن</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <div style="padding:20px">
+<div class="checkout-form" id="login-box">
+<h2>تسجيل دخول الأدمن</h2>
+<input type="password" id="password" placeholder="كلمة السر">
+<button onclick="login()">دخول</button>
+</div>
 
-    <h1>لوحة الأدمن</h1>
+<div id="admin-panel" style="display:none;padding:20px;">
+<h1>لوحة تحكم DSTORE</h1>
 
-    <input type="password" id="password" placeholder="كلمة السر">
+<h2>إضافة منتج</h2>
+<input type="text" id="pname" placeholder="اسم المنتج">
+<input type="number" id="pprice" placeholder="السعر بالجنيه المصري">
+<input type="text" id="pimage" placeholder="رابط صورة المنتج">
+<button onclick="addProduct()">إضافة المنتج</button>
 
-    <button onclick="login()">دخول</button>
+<h2>المنتجات</h2>
+<div id="admin-products"></div>
 
-    <div id="orders"></div>
+<h2>الطلبات</h2>
+<div id="orders"></div>
 
-  </div>
+<h2>إحصائيات</h2>
+<p>عدد مستخدمين الموقع: <span id="visitors">0</span></p>
+</div>
 
-<script>
-
-const SUPABASE_URL = "ضع رابط مشروع Supabase هنا";
-const SUPABASE_KEY = "ضع Publishable Key هنا";
-
-const client = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-async function login(){
-
-  const pass = document.getElementById("password").value;
-
-  if(pass !== "diaa2011"){
-    alert("كلمة المرور خطأ");
-    return;
-  }
-
-  loadOrders();
-}
-
-async function loadOrders(){
-
-  const { data, error } = await client
-    .from("orders")
-    .select("*")
-    .order("id", { ascending:false });
-
-  if(error){
-    alert("خطأ");
-    return;
-  }
-
-  let html = "";
-
-  data.forEach(order => {
-
-    html += `
-      <div class="product">
-        <h3>${order.product_name}</h3>
-        <p>الاسم: ${order.customer_name}</p>
-        <p>الهاتف: ${order.phone}</p>
-        <p>العنوان: ${order.address}</p>
-        <p>الحالة: ${order.status}</p>
-      </div>
-    `;
-
-  });
-
-  document.getElementById("orders").innerHTML = html;
-}
-
-</script>
-
+<script src="admin.js"></script>
 </body>
-
 </html>
