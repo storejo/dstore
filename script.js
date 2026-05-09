@@ -1,40 +1,41 @@
-const SUPABASE_URL = "اhttps://vdlwplfgdhqljgeqysek.supabase.co/rest/v1/";
-const SUPABASE_KEY = "sb_publishable_z29bkoeLNQ4xRotEQ_33NQ_f9SnsLLt";
+let products = JSON.parse(localStorage.getItem("products")) || [
+{
+name:"هاتف سامسونج",
+price:15000,
+image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+},
+{
+name:"لاب توب احترافي",
+price:30000,
+image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853"
+}
+];
 
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-async function orderNow(productName) {
+const productsContainer = document.getElementById("products");
 
-  const customer_name = prompt("ادخل اسمك");
-  if (!customer_name) return;
+function showProducts(){
+productsContainer.innerHTML = "";
 
-  const phone = prompt("ادخل رقم الهاتف");
-  if (!phone) return;
+products.forEach((product,index)=>{
+productsContainer.innerHTML += `
+<div class="product">
+<img src="${product.image}">
+<h3>${product.name}</h3>
+<p class="price">${product.price} EGP</p>
+<button onclick="buyNow(${index})">شراء الآن</button>
+</div>
+`;
+});
+}
 
-  const address = prompt("ادخل العنوان");
-  if (!address) return;
+showProducts();
 
-  const { error } = await supabaseClient
-    .from("orders")
-    .insert([
-      {
-        customer_name,
-        phone,
-        address,
-        product_name: productName,
-        status: "قيد المراجعة"
-      }
-    ]);
-
-  if (error) {
-
-    alert("حدث خطأ");
-    console.log(error);
-
-  } else {
+function buyNow(index){
+localStorage.setItem("selectedProduct",JSON.stringify(products[index]));
+window.location.href = "checkout.html";
+  }  } else {
 
     alert("تم إرسال الطلب بنجاح");
 
