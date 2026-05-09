@@ -1,60 +1,28 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>DStore Ultimate</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSTORE</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <header class="header">
-    <div class="logo">DStore</div>
+<header>
+<div class="logo">DSTORE💲</div>
+<input type="text" id="search" placeholder="ابحث عن منتج...">
+<div class="cart">
+🛒 <span id="cart-count">0</span>
+</div>
+</header>
 
-    <input type="text" placeholder="ابحث عن منتج..." class="search">
+<section class="hero">
+<h1>أهلاً بك في متجر DSTORE</h1>
+<p>أفضل متجر إلكتروني احترافي</p>
+</section>
 
-    <a href="admin.html" class="admin-btn">لوحة الادمن</a>
-  </header>
+<section class="products" id="products"></section>
 
-  <section class="hero">
-    <h1>أفضل متجر إلكترونيات</h1>
-    <p>تسوق أفضل المنتجات بأفضل الأسعار</p>
-    <button>تسوق الآن</button>
-  </section>
-
-  <section class="products">
-
-    <div class="product">
-      <img src="https://i.imgur.com/8zQZ5FQ.png">
-      <h2>هاتف ذكي</h2>
-      <p>السعر: 120$</p>
-      <button onclick="buy('هاتف ذكي')">شراء الآن</button>
-    </div>
-
-    <div class="product">
-      <img src="https://i.imgur.com/MN6Hu4z.png">
-      <h2>سماعات احترافية</h2>
-      <p>السعر: 40$</p>
-      <button onclick="buy('سماعات احترافية')">شراء الآن</button>
-    </div>
-
-    <div class="product">
-      <img src="https://i.imgur.com/0h7Qx7K.png">
-      <h2>لابتوب للألعاب</h2>
-      <p>السعر: 500$</p>
-      <button onclick="buy('لابتوب للألعاب')">شراء الآن</button>
-    </div>
-
-  </section>
-
-  <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
-
 </html>
