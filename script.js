@@ -1,66 +1,137 @@
-let products = JSON.parse(localStorage.getItem("products")) || [
-{
-name:"هاتف سامسونج",
-price:15000,
-image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
-},
-{
-name:"لاب توب احترافي",
-price:30000,
-image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853"
-}
-];
+function login() {
 
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
+const password = document.getElementById("password").value;
 
-const productsContainer = document.getElementById("products");
+if (password === "dstore2011") {
 
-function showProducts(){
-productsContainer.innerHTML = "";
+document.getElementById("login-box").style.display = "none";
 
-products.forEach((product,index)=>{
-productsContainer.innerHTML += `
-<div class="product">
-<img src="${product.image}">
-<h3>${product.name}</h3>
-<p class="price">${product.price} EGP</p>
-<button onclick="buyNow(${index})">شراء الآن</button>
-</div>
-`;
-});
-}
+document.getElementById("admin-panel").style.display = "block";
 
 showProducts();
 
-function buyNow(index){
-localStorage.setItem("selectedProduct",JSON.stringify(products[index]));
-window.location.href = "checkout.html";
-  }  } else {
+showOrders();
 
-    alert("تم إرسال الطلب بنجاح");
+} else {
 
-  }
+alert("كلمة المرور غير صحيحة");
+
 }
 
-async function trackOrder() {
+}
 
-  const phone =
-    document.getElementById("trackPhone").value;
+function addProduct() {
 
-  const { data, error } = await supabaseClient
-    .from("orders")
-    .select("*")
-    .eq("phone", phone);
+const name = document.getElementById("pname").value;
 
-  if (data.length > 0) {
+const price = document.getElementById("pprice").value;
 
-    document.getElementById("result").innerHTML =
-      "حالة الطلب: " + data[0].status;
+const image = document.getElementById("pimage").value;
 
-  } else {
+if(name === "" || price === "" || image === ""){
 
-    document.getElementById("result").innerHTML =
-      "لا يوجد طلب بهذا الرقم";
+alert("املأ جميع البيانات");
+
+return;
+
+}
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+products.push({
+
+name: name,
+
+price: price,
+
+image: image
+
+});
+
+localStorage.setItem("products", JSON.stringify(products));
+
+alert("تم إضافة المنتج");
+
+showProducts();
+
+}
+
+function showProducts() {
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+const box = document.getElementById("admin-products");
+
+box.innerHTML = "";
+
+products.forEach((product, index) => {
+
+box.innerHTML += `
+
+<div class="product">
+
+<img src="${product.image}" width="200">
+
+<h3>${product.name}</h3>
+
+<p>${product.price} EGP</p>
+
+<button onclick="deleteProduct(${index})">
+
+حذف المنتج
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+function deleteProduct(index) {
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+products.splice(index, 1);
+
+localStorage.setItem("products", JSON.stringify(products));
+
+showProducts();
+
+}
+
+function showOrders() {
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+const box = document.getElementById("orders");
+
+box.innerHTML = "";
+
+orders.forEach(order => {
+
+box.innerHTML += `
+
+<div class="product">
+
+<h3>${order.product}</h3>
+
+<p>العميل: ${order.customer}</p>
+
+<p>الهاتف: ${order.phone}</p>
+
+<p>العنوان: ${order.address}</p>
+
+<p>الدفع: ${order.payment}</p>
+
+<p>الحالة: ${order.status}</p>
+
+</div>
+
+`;
+
+});
 
   }
-}
