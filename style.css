@@ -1,0 +1,81 @@
+body{
+    margin:0;
+    font-family:Arial;
+    background:#111;
+    color:white;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    background:#1a1a1a;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#00ffcc;
+}
+
+.search{
+    width:40%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+}
+
+.admin-btn{
+    background:#00ffcc;
+    color:black;
+    padding:10px 15px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.hero{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.hero button{
+    padding:12px 25px;
+    border:none;
+    background:#00ffcc;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
+}
+
+.product{
+    background:#1f1f1f;
+    padding:20px;
+    border-radius:12px;
+    width:250px;
+    text-align:center;
+}
+
+.product img{
+    width:100%;
+    border-radius:10px;
+}
+
+.product button{
+    margin-top:10px;
+    padding:10px 20px;
+    border:none;
+    background:#00ffcc;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
