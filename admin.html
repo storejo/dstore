@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>لوحة الأدمن</title>
+
+<link rel="stylesheet" href="admin.css">
+
+<script type="module" src="admin.js"></script>
+
+</head>
+
+<body>
+
+<div class="login-box" id="loginBox">
+
+<h2>تسجيل دخول الأدمن</h2>
+
+<input type="password"
+id="adminPassword"
+placeholder="كلمة المرور">
+
+<button id="loginBtn">
+دخول
+</button>
+
+</div>
+
+<div class="admin-panel" id="adminPanel">
+
+<h1>DSTORE ADMIN</h1>
+
+<div class="stats">
+
+<div class="card">
+<h2 id="ordersCount">0</h2>
+<p>الطلبات</p>
+</div>
+
+<div class="card">
+<h2 id="visitorsCount">0</h2>
+<p>الزوار</p>
+</div>
+
+</div>
+
+<h2>إضافة منتج</h2>
+
+<input type="text" id="productName"
+placeholder="اسم المنتج">
+
+<input type="text" id="productPrice"
+placeholder="السعر">
+
+<input type="text" id="productImage"
+placeholder="رابط الصورة">
+
+<button id="addProduct">
+إضافة المنتج
+</button>
+
+<h2>الطلبات</h2>
+
+<div id="ordersContainer"></div>
+
+</div>
+
+</body>
+</html>

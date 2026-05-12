@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSTORE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<script type="module" src="firebase.js"></script>
+<script type="module" src="script.js"></script>
+
+</head>
+<body>
+
+<header>
+
+<div class="logo">
+DSTORE<span>$</span>
+</div>
+
+<nav>
+<a href="#">الرئيسية</a>
+<a href="#products">المنتجات</a>
+<a href="#">العروض</a>
+<a href="#">اتصل بنا</a>
+</nav>
+
+<div class="icons">
+<i class="fa-solid fa-cart-shopping"></i>
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-text">
+<h1>DSTORE$</h1>
+<h2>كل ما تحتاجه في مكان واحد</h2>
+<p>أفضل المنتجات بأفضل الأسعار</p>
+<button>تسوق الآن</button>
+</div>
+
+<div class="hero-img">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="feature">
+<i class="fa-solid fa-truck"></i>
+<h3>شحن سريع</h3>
+</div>
+
+<div class="feature">
+<i class="fa-solid fa-shield"></i>
+<h3>ضمان جودة</h3>
+</div>
+
+<div class="feature">
+<i class="fa-solid fa-headset"></i>
+<h3>دعم 24/7</h3>
+</div>
+
+</section>
+
+<section class="products" id="products">
+
+<h2>المنتجات</h2>
+
+<div class="products-container" id="productsContainer">
+
+</div>
+
+</section>
+
+<div class="order-modal" id="orderModal">
+
+<div class="modal-content">
+
+<h2>إتمام الطلب</h2>
+
+<input type="text" id="customerName" placeholder="الاسم">
+
+<input type="text" id="customerPhone" placeholder="رقم الهاتف">
+
+<input type="text" id="customerAddress" placeholder="العنوان">
+
+<select id="paymentMethod">
+<option>فودافون كاش</option>
+<option>اتصالات كاش</option>
+<option>Visa</option>
+</select>
+
+<button id="confirmOrder">تأكيد الطلب</button>
+
+</div>
+
+</div>
+
+</body>
+</html>
